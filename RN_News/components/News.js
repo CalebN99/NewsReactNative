@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, TouchableWithoutFeedback, View, Image, ImageBackground } from 'react-native';
+import {StyleSheet, Text, TouchableWithoutFeedback, View, Image, ImageBackground, Linking} from 'react-native';
+import A from 'react-native-a'
+
 
 
 const url = "https://newsapi.org/v2/everything?q=everything&apiKey=f2720b3bc6744811933d0844a65d9650"
@@ -50,13 +52,17 @@ class News extends Component {
                     {this.state.items.articles.map(article => {
 
                            const image = { uri: article.urlToImage};
-                      
+                           const url = { uri: article.url};
+                    
                            return ( 
-                                <View style={styles.newsContainer}>
+                               <A href={article.url}>
+                                    <View style={styles.newsContainer} onPress={() => Linking.openURL(url)}>
                                     
                                     <ImageBackground source={image} style={styles.newsImage}/>
                                     <Text style={styles.newsTitle}>{article.title}</Text>
                                </View>
+                               </A>
+                               
                         )
                        })}
                     
