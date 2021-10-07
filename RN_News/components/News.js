@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, TouchableWithoutFeedback, View, Image } from 'react-native';
+import {StyleSheet, Text, TouchableWithoutFeedback, View, Image, ImageBackground } from 'react-native';
 
 
-const url = "https://newsapi.org/v2/everything?q=keyword&apiKey=f2720b3bc6744811933d0844a65d9650"
+const url = "https://newsapi.org/v2/everything?q=everything&apiKey=f2720b3bc6744811933d0844a65d9650"
 
 
 class News extends Component {
@@ -48,11 +48,13 @@ class News extends Component {
                 <View style={styles.container}>
                     
                     {this.state.items.articles.map(article => {
-                        let imgURL = `${article.urlToImage}`
+
+                           const image = { uri: article.urlToImage};
+                      
                            return ( 
                                 <View style={styles.newsContainer}>
-                                    <Image source={require(imgURL)} />
-                                    <View style={styles.newsImage}></View>
+                                    
+                                    <ImageBackground source={image} style={styles.newsImage}/>
                                     <Text style={styles.newsTitle}>{article.title}</Text>
                                </View>
                         )
@@ -82,8 +84,6 @@ const styles = StyleSheet.create({
     newsImage: {
         width: 325,
         height: 175,
-        borderWidth: 5,
-        borderColor: "black",
         alignSelf: "center"
     },
     newsTitle: {
