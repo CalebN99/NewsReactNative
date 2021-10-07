@@ -11,14 +11,8 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.titleBanner}>
-                    <Text style={styles.bannerText}>RN News</Text>
-                </View>
-                <ScrollView>
-                    <News/>
-                    <Text style={styles.createdByText}>RN News created by Caleb Norris - 2021</Text>
-                </ScrollView>
-               
+                <News/>
+                <Text style={styles.createdByText}>RN News created by Caleb Norris - 2021</Text>
             </View>
         )
     }
@@ -29,19 +23,8 @@ const styles = StyleSheet.create({
       padding: 0,
       height: 900,
       textAlign: "center",
+      alignItems: "center"
       
-    },
-    titleBanner: {
-        height: 100,
-        paddingTop: 5,
-        backgroundColor: "black",
-        alignItems: "center"
-    },
-    bannerText: {
-        color: "white",
-        marginTop: 50,
-        fontSize: 28,
-        fontWeight: "bold"
     },
     createdByText: {
         color: "gray",
