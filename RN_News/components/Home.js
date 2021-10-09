@@ -12,7 +12,6 @@ class Home extends Component {
         return (
             <View style={styles.container}>
                 <News/>
-                <Text style={styles.createdByText}>RN News created by Caleb Norris - 2021</Text>
             </View>
         )
     }
@@ -26,13 +25,6 @@ const styles = StyleSheet.create({
       alignItems: "center"
       
     },
-    createdByText: {
-        color: "gray",
-        fontSize: 12,
-        textAlign: "center",
-        marginTop: 10
-        
-    }
   });
 
 export default Home;

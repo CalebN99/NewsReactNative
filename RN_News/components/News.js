@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, TextInput, View, Image, ImageBackground, Linking, ScrollView} from 'react-native';
+import {StyleSheet, Text, TextInput, View, ImageBackground, Linking, ScrollView} from 'react-native';
 import A from 'react-native-a'
+import {Picker} from '@react-native-picker/picker';
 
 
 
@@ -51,9 +52,12 @@ class News extends Component {
                 <View style={styles.container}>
                     <View style={styles.titleBanner}>
                         <Text style={styles.bannerText}>RN News</Text>
-                        <TextInput placeholder="Search..." style={styles.searchBar}
-                         onChangeText={(text) => this.setState({search: text})}
-                          value={this.state.search}/>
+                       <Picker
+                       selectedValue={this.state.search}
+                       onValueChange={itemValue => this.setState({search: itemValue})}>
+                            <Picker.Item label="Everything" value="everything" />
+                            <Picker.Item label="JavaScript" value="js" />
+                       </Picker>
                     </View>
                     <ScrollView> 
                         {this.state.items.articles.map(article => {
@@ -68,6 +72,7 @@ class News extends Component {
                                 </View>
                             </A>
                         )})}
+                        <Text style={styles.createdByText}>RN News created by Caleb Norris - 2021</Text>
                     </ScrollView>   
                 </View>
             )
@@ -124,6 +129,13 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: "bold"
     },
+    createdByText: {
+        color: "gray",
+        fontSize: 12,
+        textAlign: "center",
+        marginTop: 10
+        
+    }
   });
 
 export default News;
